@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YY AI Investment Map</title>
+<style>
+:root{--bg:#07111f;--panel:#0f1b2b;--panel2:#13243a;--line:#223751;--text:#f1f6fd;--muted:#8ea3bc;--accent:#78aefc;--accent2:#a5c8ff;--green:#63d7aa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -20%,#162c48 0,#07111f 38%,#07111f 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.55}
+button{font:inherit}.wrap{max-width:1280px;margin:auto;padding:0 26px 50px}.top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:38px 0 26px;border-bottom:1px solid var(--line)}.kicker{font-size:12px;letter-spacing:.15em;color:var(--accent);text-transform:uppercase}.title{font-size:36px;line-height:1.15;font-weight:850;margin:7px 0 8px}.subtitle{color:var(--muted);max-width:720px}.updated{font-size:12px;color:var(--muted);text-align:right;white-space:nowrap}.updated b{color:#dce9fb}.intro{padding:28px 0 18px}.intro h2{font-size:19px;margin:0 0 5px}.intro p{margin:0;color:var(--muted);font-size:14px}.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.legend span{font-size:12px;padding:4px 9px;border:1px solid var(--line);border-radius:999px;color:#b9cae0}.chain{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;margin-top:14px}.industry{position:relative;min-height:178px;text-align:left;background:linear-gradient(180deg,#101f32,#0d1928);border:1px solid var(--line);border-radius:16px;padding:16px;cursor:pointer;color:inherit;transition:.18s ease;overflow:hidden}.industry:hover{transform:translateY(-3px);border-color:#4d77a7;box-shadow:0 18px 40px rgba(0,0,0,.22)}.industry.active{border-color:var(--accent);box-shadow:0 0 0 1px rgba(120,174,252,.2),0 18px 40px rgba(0,0,0,.22)}.industry-num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#5d7898;font-size:12px}.industry-stage{position:absolute;right:12px;top:12px;border:1px solid #2d4663;padding:2px 7px;border-radius:999px;font-size:11px;color:#9cb2cb}.industry h3{font-size:19px;margin:24px 0 8px}.industry p{font-size:13px;color:#9fb2c9;margin:0 0 12px}.mini-tickers{display:flex;gap:5px;flex-wrap:wrap}.mini-tickers span{font-size:11px;background:#0a1523;border:1px solid #253a55;color:#c4d4e7;padding:3px 6px;border-radius:6px}.arrow{position:absolute;right:14px;bottom:12px;color:#5d7c9f;font-size:18px}.detail{margin-top:24px;border:1px solid var(--line);background:linear-gradient(180deg,#0e1b2c,#0b1725);border-radius:18px;overflow:hidden}.detail-head{padding:22px 22px 18px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:22px}.detail-title{display:flex;align-items:center;gap:11px}.detail-title h2{margin:0;font-size:27px}.stage-badge{font-size:12px;border:1px solid #3b5d82;color:#b8d2f2;border-radius:999px;padding:3px 9px}.detail-summary{color:#b9c9dc;margin:8px 0 0;max-width:820px}.question{max-width:370px;background:#10243a;border:1px solid #274564;border-radius:12px;padding:12px 14px;font-size:13px;color:#c8d8e8}.question b{display:block;color:var(--accent2);margin-bottom:3px}.watchbar{display:flex;gap:7px;flex-wrap:wrap;padding:12px 22px;border-bottom:1px solid var(--line);background:#0b1725}.watchbar span{font-size:12px;color:#a9bdd4;border-right:1px solid #2b4059;padding-right:8px}.watchbar span:last-child{border-right:0}.companies{display:grid;grid-template-columns:repeat(4,1fr);gap:0}.company{padding:20px;border-right:1px solid var(--line);min-height:245px}.company:last-child{border-right:0}.company .ticker{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent);font-size:12px}.company h3{font-size:19px;margin:5px 0 2px}.role{color:#8fa7c2;font-size:12px}.thesis{color:#c4d1e1;font-size:13px;margin:16px 0}.watch-title{font-size:11px;letter-spacing:.08em;color:#738ba7;text-transform:uppercase;margin-bottom:6px}.watch-list{margin:0;padding-left:17px;color:#9fb2c9;font-size:12px}.watch-list li{margin:3px 0}.research{margin-top:35px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:20px;border-bottom:1px solid var(--line);padding-bottom:10px}.section-title h2{margin:0;font-size:20px}.section-title p{margin:0;color:var(--muted);font-size:12px}.research-list{background:#0c1827;border:1px solid var(--line);border-radius:15px;margin-top:13px;padding:0 18px}.research-item{display:grid;grid-template-columns:100px 100px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}.research-item:last-child{border-bottom:0}.date,.tag{font-size:12px;color:var(--muted)}.tag{color:var(--accent)}.research-title{font-weight:720}.research-summary{color:#9fb0c5;font-size:13px;margin-top:2px}.edit-note{margin-top:24px;border:1px dashed #375776;background:#0b1928;border-radius:13px;padding:13px 15px;color:#afc2d8;font-size:13px}.edit-note code{color:#8fc0ff}.footer{margin-top:25px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:#70869f}
+@media(max-width:1100px){.chain{grid-template-columns:repeat(3,1fr)}.companies{grid-template-columns:repeat(2,1fr)}.company:nth-child(2n){border-right:0}.company{border-bottom:1px solid var(--line)}.detail-head{grid-template-columns:1fr}.question{max-width:none}}
+@media(max-width:700px){.wrap{padding:0 16px 35px}.top{align-items:flex-start;flex-direction:column}.updated{text-align:left}.title{font-size:29px}.chain{grid-template-columns:1fr 1fr}.companies{grid-template-columns:1fr}.company{border-right:0}.detail-title{align-items:flex-start;flex-direction:column}.research-item{grid-template-columns:1fr}.industry{min-height:165px}}
+@media(max-width:430px){.chain{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div><div class="kicker">AI INDUSTRY CHAIN</div><div class="title" id="site-title"></div><div class="subtitle" id="site-subtitle"></div></div>
+    <div class="updated">LAST UPDATED<br><b id="last-updated"></b></div>
+  </header>
+
+  <section class="intro">
+    <h2>AI产业链全景</h2>
+    <p>从上游设备与制造，到算力/网络/数据中心，再到云、大模型与应用。点击任一行业查看核心公司。</p>
+    <div class="legend"><span>上游：设备 / 制造 / 存储</span><span>中游：算力 / 网络 / 数据中心 / 电力</span><span>下游：云 / 模型 / 应用</span></div>
+  </section>
+
+  <main class="chain" id="chain-grid"></main>
+
+  <section class="detail" id="detail"></section>
+
+  <section class="research">
+    <div class="section-title"><div><h2>Research Library</h2><p>专题研究与周报可继续沉淀在同一网页</p></div></div>
+    <div class="research-list" id="research-list"></div>
+  </section>
+
+  <div class="edit-note"><b>日常更新方式：</b> 主要编辑 <code>data.js</code>。每个行业都可以直接修改说明、重点跟踪项以及3–4家核心公司；无需调整网页布局。</div>
+  <footer class="footer">For research use only · Data and opinions are manually maintained and may not be real-time.</footer>
+</div>
+<script src="data.js"></script>
+<script>
+const D=window.AI_TERMINAL_DATA, $=s=>document.querySelector(s);
+$('#site-title').textContent=D.meta.title; $('#site-subtitle').textContent=D.meta.subtitle; $('#last-updated').textContent=D.meta.lastUpdated;
+const grid=$('#chain-grid'), detail=$('#detail');
+function card(x,i){return `<button class="industry ${i===0?'active':''}" data-id="${x.id}"><div class="industry-num">${x.icon}</div><div class="industry-stage">${x.stage}</div><h3>${x.name}</h3><p>${x.summary}</p><div class="mini-tickers">${x.companies.slice(0,4).map(c=>`<span>${c.ticker}</span>`).join('')}</div><div class="arrow">→</div></button>`}
+grid.innerHTML=D.chain.map(card).join('');
+function renderDetail(id,shouldScroll=false){
+ const x=D.chain.find(v=>v.id===id)||D.chain[0];
+ document.querySelectorAll('.industry').forEach(b=>b.classList.toggle('active',b.dataset.id===x.id));
+ detail.innerHTML=`<div class="detail-head"><div><div class="detail-title"><span class="stage-badge">${x.stage}</span><h2>${x.name}</h2></div><p class="detail-summary">${x.summary}</p></div><div class="question"><b>核心投资问题</b>${x.keyQuestion}</div></div><div class="watchbar">${x.watch.map(v=>`<span>${v}</span>`).join('')}</div><div class="companies">${x.companies.map(c=>`<article class="company"><div class="ticker">${c.ticker}</div><h3>${c.name}</h3><div class="role">${c.role}</div><p class="thesis">${c.thesis}</p><div class="watch-title">Key Watch</div><ul class="watch-list">${c.watch.map(v=>`<li>${v}</li>`).join('')}</ul></article>`).join('')}</div>`;
+ if(shouldScroll) detail.scrollIntoView({behavior:'smooth',block:'start'});
+}
+renderDetail(D.chain[0].id);
+document.querySelectorAll('.industry').forEach(b=>b.addEventListener('click',()=>renderDetail(b.dataset.id,true)));
+$('#research-list').innerHTML=D.research.map(x=>`<div class="research-item"><div class="date">${x.date}</div><div class="tag">${x.tag}</div><div><div class="research-title">${x.title}</div><div class="research-summary">${x.summary}</div></div></div>`).join('');
+</script>
+</body>
+</html>
